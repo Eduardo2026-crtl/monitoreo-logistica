@@ -23,6 +23,8 @@
         ::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
         ::-webkit-scrollbar-thumb:hover { background: #475569; }
         .leaflet-container { background: #0f172a; border-radius: 0.75rem; }
+        <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
     </style>
 </head>
 <body class="min-h-screen flex flex-col">
@@ -381,6 +383,24 @@
 
     <!-- SCRIPT DE CONTROL OPERATIVO -->
     <script>
+       // ==========================================
+        // CONFIGURACIÓN DE NUBE EN TIEMPO REAL (FIREBASE)
+        // ==========================================
+        const firebaseConfig = {
+            apiKey: "AIzaSyCpZnObIn1TiolaYKwbF8D6wf-FPrmclwM",
+            authDomain: "monitoreo-logistica-179d8.firebaseapp.com",
+            databaseURL: "https://monitoreo-logistica-179d8-default-rtdb.firebaseio.com",
+            projectId: "monitoreo-logistica-179d8",
+            storageBucket: "monitoreo-logistica-179d8.firebasestorage.app",
+            messagingSenderId: "474445230598",
+            appId: "1:474445230598:web:b025f3d936c85c5fb10987",
+            measurementId: "G-PHM956BQZP"
+        };
+        
+        // Inicializar la conexión con la base de datos
+        firebase.initializeApp(firebaseConfig);
+        const database = firebase.database();
+
         let systemUsers = [];
         const CORE_USERS = [
             { username: "eduardo.franco", password: "admin123", name: "Eduardo Franco", role: "admin" }
